@@ -1,14 +1,16 @@
 Test Components
 
 ```bash
-MACHINENAME=skip-to-content
-PATHTOSAMPLEHTML=template.html 
+MACHINENAME=step-list
+PATHTOSAMPLEHTML=template.html
 PATHTOSCSS=src/index.scss
 DSNAME=ds-$MACHINENAME
 mkdir $DSNAME
 
 ## Install component.
-npm install @cagov/$DSNAME@latest
+npm install @cagov/ds-$MACHINENAME@latest
+#or
+yalc add  @cagov/ds-$MACHINENAME
 
 ## Get HTML.
 cp node_modules/@cagov/$DSNAME/$PATHTOSAMPLEHTML $DSNAME/index.html
