@@ -9,14 +9,28 @@ const demo = {
   makeIndex: (component) => {
     demo.indexCode += `<p><a href="${component}.html">${component}</a></p>\n`;
   },
-  writeEach: (component, file) => {
+  writeCSS: (component) => {
+    let code = ``;
+    try {
+      code += `<style type="text/css">\n`;
+      code += fs.readFileSync(
+        `${demo.directoryPath}${component}/src/css/index.css`
+      );
+      code += `</style>\n`;
+    } catch (err) {
+      code = "";
+    }
+
+    return code;
+  },
+  writeEach: (component, templateFile) => {
     // Define the destination file.
     const destinationFile = `demo/${component}.html`;
 
     // Put the page together.
-    let code = `<link rel="stylesheet" href="dist/styles.css">\n`;
+    let code = demo.writeCSS(component);
     code += `<script type="module" src='dist/scripts.js'></script>\n`;
-    code += fs.readFileSync(file);
+    code += fs.readFileSync(templateFile);
 
     // Write file.
     fs.writeFile(destinationFile, code, (error) => {
@@ -38,9 +52,9 @@ const demo = {
       }
 
       directories.forEach((component) => {
-        const file = `${demo.directoryPath}${component}${demo.template}`;
-        if (fs.existsSync(file)) {
-          demo.writeEach(component, file);
+        const templateFile = `${demo.directoryPath}${component}${demo.template}`;
+        if (fs.existsSync(templateFile)) {
+          demo.writeEach(component, templateFile);
           demo.makeIndex(component);
         }
       });
