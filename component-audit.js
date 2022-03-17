@@ -4,10 +4,15 @@ const fs = require("fs");
 const demo = {
   directoryPath: path.join(__dirname, "node_modules/@cagov/"),
   demoContents: "",
-  createDemoContents: (component) => `directory ${component}`,
-  writeDemo: (component) => {
+  template: "/template.html",
+  createDemoContents: (file) => {
+    const contents = fs.readFileSync(file);
+    console.log(contents);
+    return contents;
+  },
+  writeDemo: (component, file) => {
     const destinationFile = `demo/${component}.html`;
-    const code = demo.createDemoContents(component);
+    const code = demo.createDemoContents(file);
     fs.writeFile(destinationFile, code, (error) => {
       if (error) {
         return console.log(error);
@@ -25,6 +30,9 @@ fs.readdir(demo.directoryPath, (err, directories) => {
   }
 
   directories.forEach((component) => {
-    demo.writeDemo(component);
+    const file = `${demo.directoryPath}${component}${demo.template}`;
+    if (fs.existsSync(file)) {
+      demo.writeDemo(component, file);
+    }
   });
 });
