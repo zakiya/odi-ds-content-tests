@@ -6,7 +6,7 @@
   "scripts": {
     "component-audit": "node component-audit.js",
     "sass": "sass",
-    "serve": "npx web-dev-server"
+    "serve": "npx web-dev-server --root-dir demo"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +38,6 @@
     "prettier": "^2.4.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "@open-wc/eslint-config": "^4.3.0"  
+    "@open-wc/eslint-config": "^4.3.0"
   }
 }
