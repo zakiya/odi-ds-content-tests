@@ -12,12 +12,26 @@ const demo = {
   writeCSS: (component) => {
     let code = ``;
     try {
+      const css1 = `${demo.directoryPath}${component}/src/css/index.css`;
+      const css2 = `${demo.directoryPath}${component}/index.css`;
+      const css3 = `${demo.directoryPath}${component}/src/index.css`;
+      const css4 = `${demo.directoryPath}${component}/dist/index.css`;
+      let cssFile = "";
+
+      if (fs.existsSync(css1)) {
+        cssFile = css1;
+      } else if (fs.existsSync(css2)) {
+        cssFile = css2;
+      } else if (fs.existsSync(css3)) {
+        cssFile = css3;
+      } else if (fs.existsSync(css4)) {
+        cssFile = css4;
+      }
       code += `<style type="text/css">\n`;
-      code += fs.readFileSync(
-        `${demo.directoryPath}${component}/src/css/index.css`
-      );
+      code += fs.readFileSync(cssFile);
       code += `</style>\n`;
     } catch (err) {
+      console.log(err);
       code = "";
     }
 
