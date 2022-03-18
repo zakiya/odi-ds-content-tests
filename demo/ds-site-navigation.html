@@ -1,0 +1,847 @@
+<style type="text/css">
+/* Tablet and wider */
+/* Desktop and wider */
+/* utility classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hidden-search {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-icons,
+.search-close {
+    display: none !important;
+  }
+}
+/* MAIN MENU */
+.cagov-nav.mobile-search {
+  margin-top: 1rem;
+}
+
+.cagov-nav.menu-trigger {
+  margin-top: 1rem;
+  padding: 0.5em 1em 0.5em 0;
+  transition: 0.3s;
+  transform-origin: top left;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  right: 0;
+  transition: 0.3s;
+  transform-origin: center center;
+}
+.cagov-nav.menu-trigger .is-fixed {
+  position: fixed;
+}
+@media (max-width: 767px) {
+  .cagov-nav.menu-trigger {
+    z-index: 2000;
+  }
+}
+@media (min-width: 768px) {
+  .cagov-nav.menu-trigger {
+    z-index: 2000;
+  }
+}
+
+cagov-site-navigation .container {
+  padding: 0;
+  margin: 0;
+}
+cagov-site-navigation .container .search-container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* EXPANDED MENU SYTLES */
+cagov-site-navigation {
+  border-bottom: 1px solid var(--gray-300, #e1e0e3);
+  background-color: #ffffff;
+}
+cagov-site-navigation a.expanded-menu-section-header-link {
+  /* jbum - this is to override the inherited text-decoration from .interior_page a */
+  text-decoration: none;
+}
+cagov-site-navigation.display-menu .expanded-menu {
+  display: block;
+}
+cagov-site-navigation .mobile-icons {
+  display: block;
+  margin-left: auto;
+  display: flex;
+}
+cagov-site-navigation .mobile-icons .search-btn {
+  display: flex;
+  align-items: center;
+}
+cagov-site-navigation .mobile-icons .search-btn svg {
+  margin-right: 0.5rem;
+}
+cagov-site-navigation .mobile-icons .search-btn,
+cagov-site-navigation .mobile-icons .menu-btn {
+  border: none;
+  background: transparent;
+  overflow: visible;
+  padding: 10px 10px;
+  margin-right: 10px;
+}
+cagov-site-navigation .mobile-icons .search-btn:hover,
+cagov-site-navigation .mobile-icons .menu-btn:hover {
+  color: var(--primary-dark-color, #064e66);
+}
+cagov-site-navigation .mobile-icons .search-btn:hover .blue,
+cagov-site-navigation .mobile-icons .menu-btn:hover .blue {
+  fill: var(--primary-dark-color, #064e66);
+}
+cagov-site-navigation .mobile-icons .search-btn:focus,
+cagov-site-navigation .mobile-icons .menu-btn:focus {
+  color: var(--primary-dark-color, #064e66);
+  outline: 2px solid var(--highlight-color, #fec02f);
+}
+cagov-site-navigation .mobile-icons .search-btn svg,
+cagov-site-navigation .mobile-icons .menu-btn svg {
+  position: relative;
+  top: 1px;
+}
+@media (min-width: 768px) {
+  cagov-site-navigation {
+    display: block;
+  }
+  cagov-site-navigation .mobile-icons {
+    display: none;
+  }
+}
+cagov-site-navigation .expanded-menu {
+  display: none;
+  max-width: calc(var(--w-lg, "1176px") + 32px);
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu {
+    display: block;
+    padding: 0 16px;
+  }
+}
+cagov-site-navigation .expanded-menu-grid {
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-grid {
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 0.5rem;
+    align-content: flex-start;
+    align-items: stretch;
+  }
+}
+cagov-site-navigation .expanded-menu-col {
+  text-align: left;
+}
+cagov-site-navigation .expanded-menu-section {
+  text-align: left;
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section.expanded {
+    z-index: 3;
+  }
+}
+cagov-site-navigation .expanded-menu-section.expanded .expanded-menu-dropdown {
+  max-height: none;
+  top: 2.35rem;
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section {
+    padding: 0;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  cagov-site-navigation .expanded-menu-section:last-of-type {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section.mobile-only {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section .expanded-menu-dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    min-width: 17rem;
+    background: #fff;
+    padding: 0;
+    border: none;
+  }
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section .expanded-menu-section-header {
+    padding-right: 0;
+    margin-right: 0;
+  }
+}
+@media (max-width: 767px) {
+  cagov-site-navigation .expanded-menu-section {
+    border-top: solid 1px var(--gray-300, #e1e0e3);
+  }
+}
+@media (max-width: 767px) {
+  cagov-site-navigation .expanded-menu-section.expanded .expanded-menu-dropdown {
+    max-height: 100rem;
+  }
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section.expanded .expanded-menu-dropdown {
+    max-height: none;
+    top: 59px;
+    padding: 0.5rem 1rem 1rem 1rem;
+    border: solid 1px #ccc;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+cagov-site-navigation .expanded-menu-section.expanded .expanded-menu-section-header-arrow-svg {
+  transform: rotate(180deg);
+}
+cagov-site-navigation .expanded-menu-section-header-link {
+  display: flex !important;
+  column-gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: normal;
+  font-size: 1.125rem;
+  cursor: pointer !important;
+  width: 100%;
+  text-transform: none;
+  display: block;
+  text-align: left;
+  border: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: var(--primary-color, #064e66);
+  outline-offset: -2px;
+}
+cagov-site-navigation .expanded-menu-section-header-link:active {
+  background: transparent;
+}
+cagov-site-navigation .expanded-menu-section-header-link:hover {
+  text-decoration: underline;
+  color: var(--primary-hover-color, #043747);
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section-header-link {
+    justify-content: flex-start;
+  }
+}
+cagov-site-navigation .expanded-menu-section-header-arrow {
+  max-width: 1rem;
+  max-height: 1rem;
+  transform: translateY(-50%);
+  display: block;
+  transition: all 0.5s cubic-bezier(0.57, 0.2, 0.21, 0.89);
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section-header-arrow {
+    transform: none;
+  }
+}
+cagov-site-navigation .expanded-menu-section-header-arrow-svg {
+  width: 100%;
+  display: inline-block;
+  transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-section-header-arrow-svg {
+    display: block;
+  }
+}
+cagov-site-navigation .expanded-menu-dropdown {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.57, 0.2, 0.21, 0.89);
+}
+cagov-site-navigation .expanded-menu-dropdown-link {
+  font-weight: 400;
+  font-size: 1.125rem;
+  padding: 0.5rem 0.25rem;
+  margin: 0.15rem 0 0.15rem 2px;
+  display: table;
+  transition: color 0.3s cubic-bezier(0.57, 0.2, 0.21, 0.89);
+  text-decoration: none;
+  width: 100%;
+}
+cagov-site-navigation .expanded-menu-dropdown-link:hover {
+  text-decoration: underline;
+}
+cagov-site-navigation .expanded-menu-dropdown-link.current-page-highlight {
+  font-weight: bold;
+}
+@media (min-width: 768px) {
+  cagov-site-navigation .expanded-menu-dropdown-link {
+    padding: 0.5rem 0;
+    line-height: 2rem;
+  }
+}
+@media (max-width: 767px) {
+  cagov-site-navigation .expanded-menu-dropdown-link {
+    padding: 0.5rem 0.25rem 0.5rem 1rem;
+    outline-offset: -4px;
+  }
+  cagov-site-navigation .expanded-menu-dropdown-link:first-child {
+    padding-top: 1rem;
+  }
+  cagov-site-navigation .expanded-menu-dropdown-link:last-child {
+    padding-bottom: 1rem;
+  }
+}
+cagov-site-navigation .expanded-menu-grouping:not(:first-child) {
+  margin-top: 0.5rem;
+}
+
+cagov-site-navigation.display-menu {
+  overflow: hidden;
+}
+cagov-site-navigation.display-menu .expanded-menu {
+  transform: translateX(0);
+  visibility: visible;
+}
+@media (min-width: 768px) {
+  cagov-site-navigation.display-menu .expanded-menu {
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+cagov-site-navigation.display-menu .expanded-menu:focus {
+  outline: none;
+}
+@media (max-width: 767px) {
+  cagov-site-navigation.display-menu .expanded-menu {
+    margin-left: 0;
+    border-bottom: solid 1px var(--gray-300, #e1e0e3);
+  }
+}
+@media (min-width: 768px) {
+  cagov-site-navigation.display-menu .expanded-menu-col, cagov-site-navigation.display-menu .expanded-menu-search {
+    transition: all 0.6s cubic-bezier(0.5, 1.65, 0.4, 0.8);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 768px) {
+  cagov-site-navigation.display-menu .expanded-menu-col.section-get-help {
+    transition-delay: 0.15s !important;
+  }
+  cagov-site-navigation.display-menu .expanded-menu-col.section-health-info {
+    transition-delay: 0.3s !important;
+  }
+  cagov-site-navigation.display-menu .expanded-menu-col.section-working-living-safely {
+    transition-delay: 0.45s !important;
+  }
+  cagov-site-navigation.display-menu .expanded-menu-col.section-you-help {
+    transition-delay: 0.6s !important;
+  }
+}
+
+cagov-site-navigation .expanded-menu-close-mobile-svg {
+  width: 1rem;
+  transform: rotate(180deg);
+}
+
+.expanded-menu-section-header-arrow-svg {
+  max-width: 20px;
+}
+
+/*# sourceMappingURL=index.css.map */
+</style>
+<script type="module">
+/**
+ * Dropdown menu web component
+ *
+ * @element cagov-site-navigation
+ *
+ * @cssprop --primary-color - Default value of #064E66, used for background
+ * @cssprop --gray-300 - #e1e0e3
+ * @cssprop --primary-dark-color - #064e66
+ * @cssprop --secondary-color - #fec02f
+ * @cssprop --w-lg - '1176px'
+ */
+
+// Function determining if it's mobile view (max 767px)
+function mobileView() {
+  const mobileElement = document.querySelector(
+    '.site-header .grid-mobile-icons',
+  );
+  if (mobileElement) {
+    return getComputedStyle(mobileElement).display !== 'none';
+  }
+  return false;
+}
+class CAGovSiteNavigation extends window.HTMLElement {
+  connectedCallback() {
+    document
+      .querySelector('.cagov-nav.open-menu')
+      .addEventListener('click', this.toggleMainMenu.bind(this));
+
+    // Mobile search events
+    const mobileSearchBtn = document.querySelector(
+      '.cagov-nav.mobile-search .search-btn',
+    );
+    if (mobileSearchBtn) {
+      mobileSearchBtn.setAttribute('aria-expanded', 'false');
+      document
+        .querySelector('.search-container--small .site-search input')
+        .setAttribute('tabindex', '-1');
+      document
+        .querySelector(
+          '.search-container--small .site-search button.search-submit',
+        )
+        .setAttribute('tabindex', '-1');
+      document
+        .querySelector('.search-container--small')
+        .setAttribute('aria-hidden', 'true');
+      if (mobileView()) {
+        mobileSearchBtn.addEventListener('click', () => {
+          document
+            .querySelector('.search-container--small')
+            .classList.toggle('hidden-search');
+          const searchactive = document
+            .querySelector('.search-container--small')
+            .classList.contains('hidden-search');
+          if (searchactive) {
+            mobileSearchBtn.setAttribute('aria-expanded', 'false');
+            document
+              .querySelector('.search-container--small .site-search input')
+              .setAttribute('tabindex', '-1');
+            document
+              .querySelector(
+                '.search-container--small .site-search button.search-submit',
+              )
+              .setAttribute('tabindex', '-1');
+            document
+              .querySelector('.search-container--small')
+              .setAttribute('aria-hidden', 'true');
+          } else {
+            mobileSearchBtn.setAttribute('aria-expanded', 'true');
+            document
+              .querySelector('.search-container--small .site-search input')
+              .focus();
+            document
+              .querySelector('.search-container--small .site-search input')
+              .removeAttribute('tabindex');
+            document
+              .querySelector(
+                '.search-container--small .site-search button.search-submit',
+              )
+              .removeAttribute('tabindex');
+            document
+              .querySelector('.search-container--small')
+              .setAttribute('aria-hidden', 'false');
+          }
+        });
+      }
+    }
+
+    // reset mobile search on resize
+    window.addEventListener('resize', () => {
+      document
+        .querySelector('.search-container--small')
+        .classList.add('hidden-search');
+      if (mobileSearchBtn) {
+        document
+          .querySelector('.cagov-nav.mobile-search .search-btn')
+          .setAttribute('aria-expanded', 'false');
+      }
+      document
+        .querySelector('.search-container--small .site-search input')
+        .setAttribute('tabindex', '-1');
+      document
+        .querySelector(
+          '.search-container--small .site-search button.search-submit',
+        )
+        .setAttribute('tabindex', '-1');
+      document
+        .querySelector('.search-container--small')
+        .setAttribute('aria-hidden', 'true');
+      // reset navigation on resize
+      this.closeAllMenus();
+      this.closeMainMenu();
+    });
+
+    this.expansionListeners();
+    document.addEventListener('keydown', this.escapeMainMenu.bind(this));
+    document.body.addEventListener('click', this.bodyClick.bind(this));
+    this.highlightCurrentPage();
+  }
+
+  toggleMainMenu() {
+    if (
+      document
+        .querySelector('.cagov-nav.hamburger')
+        .classList.contains('is-active')
+    ) {
+      this.closeMainMenu();
+    } else {
+      this.openMainMenu();
+    }
+  }
+
+  highlightCurrentPage() {
+    this.querySelectorAll('a.expanded-menu-dropdown-link').forEach((link) => {
+      if (link.href === window.location.href) {
+        link.classList.add('current-page-highlight');
+      }
+    });
+  }
+
+  openMainMenu() {
+    document.querySelector('.mobile-icons').classList.add('display-menu');
+    this.classList.add('display-menu');
+    document.querySelector('.cagov-nav.hamburger').classList.add('is-active');
+    document.querySelector('.cagov-nav.menu-trigger').classList.add('is-fixed');
+    document
+      .querySelector('.cagov-nav.menu-trigger')
+      .setAttribute('aria-expanded', 'true');
+    const menLabel = document.querySelector('.cagov-nav.menu-trigger-label');
+    menLabel.innerHTML = menLabel.getAttribute('data-closelabel');
+  }
+
+  closeMainMenu() {
+    document.querySelector('.mobile-icons').classList.remove('display-menu');
+    this.classList.remove('display-menu');
+    document
+      .querySelector('.cagov-nav.hamburger')
+      .classList.remove('is-active');
+    document
+      .querySelector('.cagov-nav.menu-trigger')
+      .classList.remove('is-fixed');
+    document
+      .querySelector('.cagov-nav.menu-trigger')
+      .setAttribute('aria-expanded', 'false');
+    const menLabel = document.querySelector('.cagov-nav.menu-trigger-label');
+    menLabel.innerHTML = menLabel.getAttribute('data-openlabel');
+  }
+
+  escapeMainMenu(event) {
+    // Close menus if user presses escape key.
+    if (event.keyCode === 27) {
+      this.closeAllMenus();
+    }
+  }
+
+  bodyClick(event) {
+    if (!event.target.closest('cagov-site-navigation')) {
+      this.closeAllMenus();
+    }
+  }
+
+  closeAllMenus() {
+    const allMenus = this.querySelectorAll('.js-cagov-navoverlay-expandable');
+    allMenus.forEach((menu) => {
+      const expandedEl = menu.querySelector('.expanded-menu-section');
+      expandedEl.classList.remove('expanded');
+      menu.setAttribute('aria-expanded', 'false');
+      const closestDropDown = menu.querySelector('.expanded-menu-dropdown');
+      if (closestDropDown) {
+        closestDropDown.setAttribute('aria-hidden', 'true');
+        const allLinks = closestDropDown.querySelectorAll('a');
+        allLinks.forEach((link) => {
+          link.setAttribute('tabindex', '-1'); // set tabindex to -1 so you cannot tab through these hidden links
+        });
+      }
+    });
+  }
+
+  expansionListeners() {
+    const allMenus = this.querySelectorAll('.js-cagov-navoverlay-expandable');
+    allMenus.forEach((menu) => {
+      const nearestMenu = menu.querySelector('.expanded-menu-section');
+      if (nearestMenu) {
+        const nearestMenuDropDown = nearestMenu.querySelector(
+          '.expanded-menu-dropdown',
+        );
+        if (nearestMenuDropDown) {
+          nearestMenuDropDown.setAttribute('aria-hidden', 'true');
+          menu.setAttribute('aria-expanded', 'false');
+        }
+      }
+      const menuComponent = this;
+      menu.addEventListener('click', function addingClickListener(event) {
+        if (event.target.nodeName !== 'A') {
+          event.preventDefault();
+        }
+        const expandedEl = this.querySelector('.expanded-menu-section');
+        if (expandedEl) {
+          if (expandedEl.classList.contains('expanded')) {
+            // closing an open menu
+            menuComponent.closeAllMenus();
+          } else {
+            menuComponent.closeAllMenus();
+            expandedEl.classList.add('expanded');
+            menu.setAttribute('aria-expanded', 'true');
+            const closestDropDown = this.querySelector(
+              '.expanded-menu-dropdown',
+            );
+            if (closestDropDown) {
+              closestDropDown.setAttribute('aria-hidden', 'false');
+              const allLinks = closestDropDown.querySelectorAll('a');
+              allLinks.forEach((link) => {
+                link.removeAttribute('tabindex'); // remove tabindex from all the links
+              });
+            }
+          }
+        }
+      });
+    });
+  }
+}
+window.customElements.define('cagov-site-navigation', CAGovSiteNavigation);
+</script>
+<!--the site-header html has to be present for menu testing because cannabis puts the menu triggers outside of the module -->
+    <!--site-header-->
+    <div>
+    <div class="site-header">
+      <div class="container">
+        <div class="cagov-nav mobile-icons">
+          <button class="menu-trigger cagov-nav open-menu" aria-label="Navigation menu" aria-haspopup="true" aria-expanded="false"
+            aria-owns="mainMenu" aria-controls="mainMenu">
+            <div class="cagov-nav hamburger">
+              <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+              </div>
+            </div>
+            <div class="cagov-nav menu-trigger-label menu-label" data-openlabel="Open" data-closelabel="Close">Menu</div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--end site-header-->
+    
+  <cagov-site-navigation>
+  <div class="container">
+    <div class="search-container search-container--small hidden-search">
+      <form class="site-search" action="/serp/">
+        <span class="sr-only" id="SearchInput2">Custom Google Search</span>
+        <input type="text" name="q" aria-labelledby="SearchInput2" placeholder="Search this website"
+          class="search-textfield">
+        <button type="submit" class="search-submit">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            width="17px" height="17px" viewBox="0 0 17 17" style="enable-background:new 0 0 17 17;"
+            xml:space="preserve">
+            <path class="blue" d="M16.4,15.2l-4-4c2-2.6,1.8-6.5-0.6-8.9c-1.3-1.3-3-2-4.8-2S3.5,1,2.2,2.3c-2.6,2.6-2.6,6.9,0,9.6
+        c1.3,1.3,3,2,4.8,2c1.4,0,2.9-0.5,4.1-1.4l4.1,4c0.2,0.2,0.4,0.3,0.7,0.3c0.2,0,0.5-0.1,0.7-0.3C16.7,16.2,16.7,15.6,16.4,15.2
+        L16.4,15.2z M7,12c-1.3,0-2.6-0.5-3.5-1.4c-1.9-1.9-1.9-5.1,0-7C4.4,2.7,5.6,2.1,7,2.1s2.6,0.5,3.5,1.4c0.9,0.9,1.4,2.2,1.4,3.5
+        c0,1.3-0.5,2.6-1.4,3.5C9.5,11.5,8.3,12,7,12z" />
+          </svg>
+          <span class="sr-only">Submit</span>
+        </button>
+      </form>
+    </div>
+    <nav class="expanded-menu" role="navigation" aria-label="Site Navigation" aria-hidden="false" id="main-menu">
+      <div class="expanded-menu-grid">
+        <div class="expanded-menu-section mobile-only">
+          <strong class="expanded-menu-section-header">
+            <a class="expanded-menu-section-header-link js-event-hm-menu" href="/">Home</a>
+          </strong>
+        </div>
+        <div class="expanded-menu-col js-cagov-navoverlay-expandable">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <button class="expanded-menu-section-header-link js-event-hm-menu">
+                <span>
+                  Applicants
+                </span>
+                <span class="expanded-menu-section-header-arrow">
+                  <svg aria-hidden=true width="11" height="7"
+                    class="expanded-menu-section-header-arrow-svg" viewBox="0 0 11 7" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M1.15596 0.204797L5.49336 5.06317L9.8545 0.204797C10.4293 -0.452129 11.4124 0.625368 10.813 1.28143L5.90083 6.82273C5.68519 7.05909 5.32606 7.05909 5.1342 6.82273L0.174341 1.28143C-0.400433 0.6245 0.581838 -0.452151 1.15661 0.204797H1.15596Z"
+                        />
+                  </svg>
+                </span>
+              </button>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/applicants/how-to-apply-renew/" tabindex="-1">How to apply for or renew a license</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/applicants/license-types/" tabindex="-1">License types</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/applicants/application-license-fees/" tabindex="-1">Application and license fees</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/applicants/application-resources/" tabindex="-1">Application resources</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/applicants/access-license-portals/" tabindex="-1">Access the license portals</a>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="expanded-menu-col js-cagov-navoverlay-expandable">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <button class="expanded-menu-section-header-link js-event-hm-menu">
+                <span>
+                  Licensees
+                </span>
+                <span class="expanded-menu-section-header-arrow">
+                  <svg width="11" height="7"
+                    class="expanded-menu-section-header-arrow-svg" viewBox="0 0 11 7" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M1.15596 0.204797L5.49336 5.06317L9.8545 0.204797C10.4293 -0.452129 11.4124 0.625368 10.813 1.28143L5.90083 6.82273C5.68519 7.05909 5.32606 7.05909 5.1342 6.82273L0.174341 1.28143C-0.400433 0.6245 0.581838 -0.452151 1.15661 0.204797H1.15596Z"
+                        />
+                  </svg>
+                </span>
+              </button>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/licensees/cultivation/" tabindex="-1">Cultivation</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/licensees/manufacturing/" tabindex="-1">Manufacturing</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/licensees/distribution/" tabindex="-1">Distribution</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/licensees/testing-laboratories/" tabindex="-1">Testing laboratories</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/licensees/retail/" tabindex="-1">Retail</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/licensees/events/" tabindex="-1">Events</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/licensees/track-and-trace/" tabindex="-1">Track and Trace</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/licensees/requirements-cannabis-goods/" tabindex="-1">Requirements for cannabis goods</a>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="expanded-menu-col js-cagov-navoverlay-expandable">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <button class="expanded-menu-section-header-link js-event-hm-menu">
+                <span>
+                  Consumers
+                </span>
+                <span class="expanded-menu-section-header-arrow">
+                  <svg width="11" height="7"
+                    class="expanded-menu-section-header-arrow-svg" viewBox="0 0 11 7" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M1.15596 0.204797L5.49336 5.06317L9.8545 0.204797C10.4293 -0.452129 11.4124 0.625368 10.813 1.28143L5.90083 6.82273C5.68519 7.05909 5.32606 7.05909 5.1342 6.82273L0.174341 1.28143C-0.400433 0.6245 0.581838 -0.452151 1.15661 0.204797H1.15596Z"
+                        />
+                  </svg>
+                </span>
+              </button>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/consumers/whats-legal/" tabindex="-1">What’s legal</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/consumers/medicinal-cannabis/" tabindex="-1">Medicinal cannabis</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/consumers/responsible-cannabis-use/" tabindex="-1">Responsible cannabis use</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/consumers/talking-young-people-about-cannabis/" tabindex="-1">Talking to young people about cannabis</a>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="expanded-menu-col js-cagov-navoverlay-expandable">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <button class="expanded-menu-section-header-link js-event-hm-menu">
+                <span>
+                  Resources
+                </span>
+                <span class="expanded-menu-section-header-arrow">
+                  <svg width="11" height="7"
+                    class="expanded-menu-section-header-arrow-svg" viewBox="0 0 11 7" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M1.15596 0.204797L5.49336 5.06317L9.8545 0.204797C10.4293 -0.452129 11.4124 0.625368 10.813 1.28143L5.90083 6.82273C5.68519 7.05909 5.32606 7.05909 5.1342 6.82273L0.174341 1.28143C-0.400433 0.6245 0.581838 -0.452151 1.15661 0.204797H1.15596Z"
+                        />
+                  </svg>
+                </span>
+              </button>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/resources/laws-and-regulations/" tabindex="-1">Laws and regulations</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/resources/running-business/" tabindex="-1">Running a business in California</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/resources/file-complaint/" tabindex="-1">File a complaint</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/resources/disaster-relief-programs/" tabindex="-1">Disaster relief programs</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/resources/search-for-licensed-business/" tabindex="-1">Search for a licensed business</a>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="expanded-menu-col js-cagov-navoverlay-expandable">
+          <div class="expanded-menu-section">
+            <strong class="expanded-menu-section-header">
+              <button class="expanded-menu-section-header-link js-event-hm-menu">
+                <span>
+                  About us
+                </span>
+                <span class="expanded-menu-section-header-arrow">
+                  <svg width="11" height="7"
+                    class="expanded-menu-section-header-arrow-svg" viewBox="0 0 11 7" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M1.15596 0.204797L5.49336 5.06317L9.8545 0.204797C10.4293 -0.452129 11.4124 0.625368 10.813 1.28143L5.90083 6.82273C5.68519 7.05909 5.32606 7.05909 5.1342 6.82273L0.174341 1.28143C-0.400433 0.6245 0.581838 -0.452151 1.15661 0.204797H1.15596Z"
+                        />
+                  </svg>
+                </span>
+              </button>
+            </strong>
+            <div class="expanded-menu-dropdown">
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/about-us/about-dcc/" tabindex="-1">About DCC</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/about-us/announcements/" tabindex="-1">Announcements</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/about-us/dcc-events/" tabindex="-1">DCC events</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/about-us/public-awareness-campaigns/" tabindex="-1">Public awareness campaigns</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/about-us/scientific-research/" tabindex="-1">Scientific research</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/about-us/grant-funding/" tabindex="-1">Grant funding</a>
+              
+                <a class="expanded-menu-dropdown-link js-event-hm-menu" href="/about-us/contact-us/" tabindex="-1">Contact us</a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </nav>
+  </div>
+</cagov-site-navigation>
+
+</div>
