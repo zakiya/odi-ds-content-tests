@@ -6,13 +6,16 @@ const vars = {
 };
 
 const eachComponent = {
+  cssIndex: "/index.css",
+  cssPathsToTry: ["/src/css/", "/", "/src/", "/dist/"],
+  jsIndex: "/dist/index.js",
   writeEach: (component, templateFile) => {
     // Define the destination file.
     const destinationFile = `demo/${component}.html`;
 
     // Put the page together.
-    let code = eachComponent.writeCSS(component);
-    code += `<script type="module" src='dist/scripts.js'></script>\n`;
+    let code = eachComponent.writeEachCSS(component);
+    code += eachComponent.writeEachJS(component);
     code += fs.readFileSync(templateFile);
 
     // Write file.
@@ -22,33 +25,47 @@ const eachComponent = {
       }
       return console.log(`Creating file ${destinationFile}.`);
     });
-
-    // Copy js.
   },
-  writeCSS: (component) => {
-    let code = ``;
+  writeEachCSS: (component) => {
+    let cssCode = "";
     const componentPath = vars.directoryPath + component;
-    const index = "/index.css";
-    const pathsToTry = ["/src/css/", "/", "/src/", "/dist/"];
 
     try {
       let cssFile = "";
 
-      pathsToTry.forEach((cssPath) => {
-        if (fs.existsSync(componentPath + cssPath + index)) {
-          cssFile = componentPath + cssPath + index;
+      eachComponent.cssPathsToTry.forEach((cssPath) => {
+        if (fs.existsSync(componentPath + cssPath + eachComponent.cssIndex)) {
+          cssFile = componentPath + cssPath + eachComponent.cssIndex;
         }
       });
 
-      code += `<style type="text/css">\n`;
-      code += fs.readFileSync(cssFile);
-      code += `</style>\n`;
-      console.log(cssFile);
+      cssCode += `<style type="text/css">\n`;
+      cssCode += fs.readFileSync(cssFile);
+      cssCode += `</style>\n`;
     } catch (err) {
-      code = "";
+      cssCode = "";
     }
 
-    return code;
+    return cssCode;
+  },
+  writeEachJS: (component) => {
+    let jsCode = "";
+    const componentPath = vars.directoryPath + component;
+
+    try {
+      let jsFile = "";
+      if (fs.existsSync(componentPath + eachComponent.jsIndex)) {
+        jsFile = componentPath + eachComponent.jsIndex;
+      }
+
+      jsCode += `<script type="module">\n`;
+      jsCode += fs.readFileSync(jsFile);
+      jsCode += `</script>\n`;
+    } catch (err) {
+      jsCode = "";
+    }
+
+    return jsCode;
   }
 };
 
@@ -58,8 +75,14 @@ const demo = {
   indexCode: "",
   makeIndex: (component) => {
     demo.indexCode += `<p><a href="${component}.html">${component}</a></p>\n`;
+    fs.writeFile(demo.indexFile, demo.indexCode, (error) => {
+      if (error) {
+        return console.log(error);
+      }
+      return console.log(`Creating file ${demo.indexFile}.`);
+    });
   },
-  writeAll: () => {
+  writeAllDemos: () => {
     // Read components directory.
     fs.readdir(vars.directoryPath, (err, directories) => {
       // Catch error.
@@ -74,15 +97,8 @@ const demo = {
           demo.makeIndex(component);
         }
       });
-
-      fs.writeFile(demo.indexFile, demo.indexCode, (error) => {
-        if (error) {
-          return console.log(error);
-        }
-        return console.log(`Creating file ${demo.indexFile}.`);
-      });
     });
   }
 };
 
-demo.writeAll();
+demo.writeAllDemos();
