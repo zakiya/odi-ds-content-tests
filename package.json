@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "component-demo": "node component-audit.js",
+    "build:": "node component-workshop.js",
     "sass": "sass",
-    "serve": "npx web-dev-server --root-dir demo"
+    "serve": "npx web-dev-server --root-dir workshop",
+    "workshop": "run-s build serve"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "@cagov/ds-feature-card": "^1.0.5",
     "@cagov/ds-google-translate": "^1.0.2",
     "@cagov/ds-highlight-section": "^1.0.1",
+    "@cagov/ds-icons": "file:.yalc/@cagov/ds-icons",
     "@cagov/ds-link-grid": "^2.1.0",
     "@cagov/ds-link-icon": "^1.1.1",
     "@cagov/ds-page-alert": "^1.0.2",
@@ -29,15 +31,17 @@
     "@cagov/ds-skip-to-content": "^1.0.2",
     "@cagov/ds-statewide-footer": "^1.0.5",
     "@cagov/ds-statewide-header": "^1.0.11",
-    "@cagov/ds-step-list": "file:.yalc/@cagov/ds-step-list",
+    "@cagov/ds-step-list": "^1.0.2",
     "@cagov/ds-table": "^1.0.1",
     "@web/dev-server": "^0.1.28"
   },
   "devDependencies": {
-    "sass": "^1.45.1",
-    "prettier": "^2.4.1",
+    "@open-wc/eslint-config": "^4.3.0",
+    "dev-server": "^0.2.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "@open-wc/eslint-config": "^4.3.0"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "sass": "^1.45.1"
   }
 }

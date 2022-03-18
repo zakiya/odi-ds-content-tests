@@ -1,48 +1,38 @@
-Test Components
+# Component Workshop for local development.
 
-```bash
-MACHINENAME=step-list
-PATHTOSAMPLEHTML=template.html
-PATHTOSCSS=src/index.scss
-DSNAME=ds-$MACHINENAME
-mkdir $DSNAME
-
-## Install component.
-npm install @cagov/ds-$MACHINENAME@latest
-#or
-yalc add  @cagov/ds-$MACHINENAME
-
-## Get HTML.
-cp node_modules/@cagov/$DSNAME/$PATHTOSAMPLEHTML $DSNAME/index.html
-
-## Add css and js links to HTML.
-code $DSNAME/index.html
-
-<link rel="stylesheet" href="dist/styles.css">
-
-## Generate CSS.
-npm run sass ./node_modules/@cagov/$DSNAME/$PATHTOSCSS ./$DSNAME/dist/styles.css
-
-# If CSS only, open in browser.
-open -a google\ chrome $DSNAME/index.html
-open -a safari $DSNAME/index.html
-
-
-# ~~~ Else JS
-
-# Get js.
-cp node_modules/@cagov/$DSNAME/dist/scripts.js $DSNAME/dist/scripts.js
-
-# Add js to HTML.
-code $DSNAME/index.html
-
-<script type="module" src='dist/scripts.js'></script>
-
-
-## Run in browser
-npm run serve -- --root-dir $DSNAME
-
-open -a google\ chrome http://localhost:8000
-
+In the storefront (design-system) repo:
 
 ```
+cd component/ds-component
+yalc publish --no-scripts
+
+```
+
+In workshop (consumer-tests) repo
+
+```
+yalc add @cagov/ds-component
+npm run component-workshop
+```
+
+---
+
+Yalc helpers:
+
+```
+#
+yalc update
+
+## Remove all yalc packages from the current project.
+yalc remove --all
+
+#
+yalc installations clean my-package
+
+## See everywhere yalc is used on your machine.
+yalc installations show
+```
+
+Notes:
+
+- Will only produce a workshop when there is a template.html file.

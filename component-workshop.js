@@ -2,7 +2,8 @@ const path = require("path");
 const fs = require("fs");
 
 const vars = {
-  directoryPath: path.join(__dirname, "node_modules/@cagov/")
+  directoryPath: path.join(__dirname, "node_modules/@cagov/"),
+  workshopDir: "workshop/"
 };
 
 const eachComponent = {
@@ -11,7 +12,7 @@ const eachComponent = {
   jsIndex: "/dist/index.js",
   writeEach: (component, templateFile) => {
     // Define the destination file.
-    const destinationFile = `demo/${component}.html`;
+    const destinationFile = `${vars.workshopDir}${component}.html`;
 
     // Put the page together.
     let code = eachComponent.writeEachCSS(component);
@@ -71,7 +72,7 @@ const eachComponent = {
 
 const demo = {
   template: "/template.html",
-  indexFile: "demo/index.html",
+  indexFile: `${vars.workshopDir}index.html`,
   indexCode: "",
   makeIndex: (component) => {
     demo.indexCode += `<p><a href="${component}.html">${component}</a></p>\n`;
