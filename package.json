@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "component-audit": "node component-audit.js",
+    "component-demo": "node component-audit.js",
     "sass": "sass",
     "serve": "npx web-dev-server --root-dir demo"
   },
