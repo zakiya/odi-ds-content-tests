@@ -15,8 +15,10 @@ const eachComponent = {
     const destinationFile = `${vars.workshopDir}${component}.html`;
 
     // Put the page together.
-    let code = eachComponent.writeEachCSS(component);
+    let code = "";
+    code += eachComponent.writeEachCSS(component);
     code += eachComponent.writeEachJS(component);
+    code += eachComponent.writeEachTools(component);
     code += fs.readFileSync(templateFile);
 
     // Write file.
@@ -31,21 +33,37 @@ const eachComponent = {
     let cssCode = "";
     const componentPath = vars.directoryPath + component;
 
-    try {
-      let cssFile = "";
+    // Check first for css in js.
+    // @todo Refactor for less if checking.
+    // Be consistent and or intentional about readFile vs. readFileSync.
+    fs.readFile(`${componentPath}/dist/index.js`, (err, data) => {
+      if (err) {
+        cssCode = "";
+        // console.log(`${component} doesn't have styles in js`);
 
-      eachComponent.cssPathsToTry.forEach((cssPath) => {
-        if (fs.existsSync(componentPath + cssPath + eachComponent.cssIndex)) {
-          cssFile = componentPath + cssPath + eachComponent.cssIndex;
+        // There are no style
+        try {
+          let cssFile = "";
+
+          eachComponent.cssPathsToTry.forEach((cssPath) => {
+            if (
+              fs.existsSync(componentPath + cssPath + eachComponent.cssIndex)
+            ) {
+              cssFile = componentPath + cssPath + eachComponent.cssIndex;
+            }
+          });
+
+          cssCode += `<style type="text/css">\n`;
+          cssCode += fs.readFileSync(cssFile);
+          cssCode += `</style>\n`;
+        } catch (error) {
+          cssCode = "";
         }
-      });
-
-      cssCode += `<style type="text/css">\n`;
-      cssCode += fs.readFileSync(cssFile);
-      cssCode += `</style>\n`;
-    } catch (err) {
-      cssCode = "";
-    }
+      } else if (data.includes("var styles")) {
+        // console.log(`${component} has styles in js`);
+        // Do nothing.
+      }
+    });
 
     return cssCode;
   },
@@ -67,6 +85,21 @@ const eachComponent = {
     }
 
     return jsCode;
+  },
+  // Allow users to inject custom code aka "tools".
+  writeEachTools: (component) => {
+    let toolsCode = "";
+    const toolsFile = `tools/${component}.js`;
+    if (fs.existsSync(toolsFile)) {
+      console.log("component");
+      toolsCode = "";
+      toolsCode = `<!--tools-->`;
+      toolsCode = `<script type="module">\n`;
+      toolsCode += fs.readFileSync(toolsFile);
+      toolsCode += `</script>\n`;
+      toolsCode += `<workshop-tools></workshop-tools>`;
+    }
+    return toolsCode;
   }
 };
 

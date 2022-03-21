@@ -1,4 +1,4 @@
-# Component Workshop for local development.
+# Component workshop for local development
 
 In the storefront (design-system) repo:
 

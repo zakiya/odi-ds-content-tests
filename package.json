@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:": "node component-workshop.js",
+    "build": "node component-workshop.js",
     "sass": "sass",
     "serve": "npx web-dev-server --root-dir workshop",
     "workshop": "run-s build serve"
