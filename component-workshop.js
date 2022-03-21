@@ -29,41 +29,46 @@ const eachComponent = {
       return console.log(`Creating file ${destinationFile}.`);
     });
   },
+  stylesInJsStatus: (component) => {
+    const componentPath = vars.directoryPath + component;
+    let result = null;
+
+    const jsStatus = [
+      "1 - Has a js file but no css in js.",
+      "2 - Has css in js.",
+      "3 - No css in js."
+    ];
+    const [one, two, three] = jsStatus;
+
+    try {
+      const js = fs.readFileSync(`${componentPath}/dist/index.js`);
+      result = js.includes("var styles") ? two : one;
+    } catch (e) {
+      result = three;
+    }
+    return result;
+  },
   writeEachCSS: (component) => {
     let cssCode = "";
     const componentPath = vars.directoryPath + component;
 
-    // Check first for css in js.
-    // @todo Refactor for less if checking.
-    // Be consistent and or intentional about readFile vs. readFileSync.
-    fs.readFile(`${componentPath}/dist/index.js`, (err, data) => {
-      if (err) {
+    if (eachComponent.stylesInJsStatus(component) !== "2 - Has css in js.") {
+      try {
+        let cssFile = "";
+
+        eachComponent.cssPathsToTry.forEach((cssPath) => {
+          if (fs.existsSync(componentPath + cssPath + eachComponent.cssIndex)) {
+            cssFile = componentPath + cssPath + eachComponent.cssIndex;
+          }
+        });
+
+        cssCode += `<style type="text/css">\n`;
+        cssCode += fs.readFileSync(cssFile);
+        cssCode += `</style>\n`;
+      } catch (error) {
         cssCode = "";
-        // console.log(`${component} doesn't have styles in js`);
-
-        // There are no style
-        try {
-          let cssFile = "";
-
-          eachComponent.cssPathsToTry.forEach((cssPath) => {
-            if (
-              fs.existsSync(componentPath + cssPath + eachComponent.cssIndex)
-            ) {
-              cssFile = componentPath + cssPath + eachComponent.cssIndex;
-            }
-          });
-
-          cssCode += `<style type="text/css">\n`;
-          cssCode += fs.readFileSync(cssFile);
-          cssCode += `</style>\n`;
-        } catch (error) {
-          cssCode = "";
-        }
-      } else if (data.includes("var styles")) {
-        // console.log(`${component} has styles in js`);
-        // Do nothing.
       }
-    });
+    }
 
     return cssCode;
   },
@@ -91,13 +96,12 @@ const eachComponent = {
     let toolsCode = "";
     const toolsFile = `tools/${component}.js`;
     if (fs.existsSync(toolsFile)) {
-      console.log("component");
       toolsCode = "";
       toolsCode = `<!--tools-->`;
       toolsCode = `<script type="module">\n`;
       toolsCode += fs.readFileSync(toolsFile);
       toolsCode += `</script>\n`;
-      toolsCode += `<workshop-tools></workshop-tools>`;
+      toolsCode += `<workshop-tools></workshop-tools>\n`;
     }
     return toolsCode;
   }
@@ -113,7 +117,7 @@ const demo = {
       if (error) {
         return console.log(error);
       }
-      return console.log(`Creating file ${demo.indexFile}.`);
+      // return console.log(`Creating file ${demo.indexFile}.`);
     });
   },
   writeAllDemos: () => {

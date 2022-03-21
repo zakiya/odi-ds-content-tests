@@ -7,18 +7,17 @@
 - Watch tools folder: `npm run watch`
 - Build site and run in a broswer: `npm run workshop`
 
-### Changing markup for demo purposes.
+### Changing markup for demo purposes
 
 1. Add file called `[component]/.js` to `tools` directory.
 
-## Substituting a local package for a published one:
+### Substituting a local package for a published one
 
 1. In the storefront (design-system) repo:
 
    ```bash
    cd component/ds-component
    yalc publish --no-scripts
-
    ```
 
 2. In workshop (consumer-tests) repo
@@ -28,16 +27,18 @@
    npm run component-workshop
    ```
 
-## Misc/Notes:
+## Misc
 
-- Will only produce a demo for components with a template.html file.
+### Troubleshooting
+
+- Script will only produce a demo page for components with a `template.html` file.
 
 ### Other scripts
 
 - Rebuild demo site: `npm run build`
 - Run the site in a broswer: `npm run serve`
 
-### Yalc helpers:
+### Yalc helpers
 
 ```bash
 #
