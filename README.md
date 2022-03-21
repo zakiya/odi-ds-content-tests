@@ -1,25 +1,45 @@
 # Component workshop for local development
 
-In the storefront (design-system) repo:
+## Development
 
-```
-cd component/ds-component
-yalc publish --no-scripts
+### Get started
 
-```
+- Watch tools folder: `npm run watch`
+- Build site and run in a broswer: `npm run workshop`
 
-In workshop (consumer-tests) repo
+### Changing markup for demo purposes.
 
-```
-yalc add @cagov/ds-component
-npm run component-workshop
-```
+1. Add file called `[component]/.js` to `tools` directory.
 
----
+## Substituting a local package for a published one:
 
-Yalc helpers:
+1. In the storefront (design-system) repo:
 
-```
+   ```bash
+   cd component/ds-component
+   yalc publish --no-scripts
+
+   ```
+
+2. In workshop (consumer-tests) repo
+
+   ```bash
+   yalc add @cagov/ds-component
+   npm run component-workshop
+   ```
+
+## Misc/Notes:
+
+- Will only produce a demo for components with a template.html file.
+
+### Other scripts
+
+- Rebuild demo site: `npm run build`
+- Run the site in a broswer: `npm run serve`
+
+### Yalc helpers:
+
+```bash
 #
 yalc update
 
@@ -32,7 +52,3 @@ yalc installations clean my-package
 ## See everywhere yalc is used on your machine.
 yalc installations show
 ```
-
-Notes:
-
-- Will only produce a workshop when there is a template.html file.
