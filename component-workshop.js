@@ -16,9 +16,9 @@ const eachComponent = {
 
     // Put the page together.
     let code = "";
+    code += eachComponent.writeEachTools(component);
     code += eachComponent.writeEachCSS(component);
     code += eachComponent.writeEachJS(component);
-    code += eachComponent.writeEachTools(component);
     code += fs.readFileSync(templateFile);
 
     // Write file.
