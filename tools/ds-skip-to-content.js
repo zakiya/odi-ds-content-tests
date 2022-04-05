@@ -1,4 +1,3 @@
-<script type="module">
 const createPage = () => {
   // Create body.
   const body = document.querySelector("body");
@@ -44,42 +43,3 @@ const createPage = () => {
 };
 
 createPage();
-</script>
-<workshop-tools></workshop-tools>
-<style type="text/css">
-/* skip-to-content */
-#skip-to-content {
-  position: relative;
-  left: 50% !important;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  width: 1px;
-  height: 1px;
-  z-index: 999;
-}
-#skip-to-content a {
-  width: 1px;
-  height: 1px;
-  text-align: center;
-  position: absolute !important;
-  left: 50% !important;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  clip: unset;
-  background-color: white;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-  overflow: hidden;
-}
-#skip-to-content a:focus {
-  width: 160px;
-  height: 27px;
-}
-
-/*# sourceMappingURL=index.css.map */
-</style>
-<!--skip-to-content-->
-<div id="skip-to-content"><a href="#body-content">Skip to content</a></div>
-<!--end skip-to-content-->
