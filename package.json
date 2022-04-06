@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "new": "node src/component.js",
     "build": "node component-workshop.js",
     "watch": "watch \"npm run build\" tools ",
     "sass": "sass",
