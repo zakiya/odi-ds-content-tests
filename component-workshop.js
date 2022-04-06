@@ -3,7 +3,9 @@ const fs = require("fs");
 
 const vars = {
   directoryPath: path.join(__dirname, "node_modules/@cagov/"),
-  workshopDir: "workshop/"
+  workshopDir: "workshop/",
+  needsIconFonts: ["ds-page-alert", "ds-link-icon"],
+  fontCSS: "ds-icons/src/icon-font.css"
 };
 
 const eachComponent = {
@@ -21,6 +23,7 @@ const eachComponent = {
     code += eachComponent.writeEachTools(component);
     code += eachComponent.writeEachCSS(component);
     code += eachComponent.writeEachJS(component);
+    code += eachComponent.writeFonts(component);
     code += fs.readFileSync(templateFile);
     code += `\n</head>\n`;
 
@@ -93,6 +96,16 @@ const eachComponent = {
     }
 
     return jsCode;
+  },
+  writeFonts: (component) => {
+    let fontCode = "";
+    if (vars.needsIconFonts.includes(component)) {
+      fontCode += `<!-- Font CSS -->\n`;
+      fontCode += `<style type="text/css">\n`;
+      fontCode += fs.readFileSync(vars.directoryPath + vars.fontCSS);
+      fontCode += `</style>\n`;
+    }
+    return fontCode;
   },
   // Allow users to inject custom code aka "tools".
   writeEachTools: (component) => {
