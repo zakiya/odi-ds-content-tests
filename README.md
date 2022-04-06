@@ -16,15 +16,18 @@
 1. In the storefront (design-system) repo:
 
    ```bash
-   cd component/ds-component
+   z design-system
+   COMPONENT=page-alert
+   cd components/$COMPONENT
    yalc publish --no-scripts
    ```
 
 2. In workshop (consumer-tests) repo
 
    ```bash
-   yalc add @cagov/ds-component
-   npm run component-workshop
+   z odi-ds-content-tests
+   yalc add @cagov/ds-$COMPONENT
+   npm run workshop
    ```
 
 ## Misc
