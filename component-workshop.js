@@ -15,11 +15,14 @@ const eachComponent = {
     const destinationFile = `${vars.workshopDir}${component}.html`;
 
     // Put the page together.
+    // @todo Use document.createElement() style instead.
     let code = "";
+    code += `<head>\n`;
     code += eachComponent.writeEachTools(component);
     code += eachComponent.writeEachCSS(component);
     code += eachComponent.writeEachJS(component);
     code += fs.readFileSync(templateFile);
+    code += `\n</head>\n`;
 
     // Write file.
     fs.writeFile(destinationFile, code, (error) => {
@@ -61,7 +64,7 @@ const eachComponent = {
             cssFile = componentPath + cssPath + eachComponent.cssIndex;
           }
         });
-
+        cssCode += `<!-- Component CSS -->\n`;
         cssCode += `<style type="text/css">\n`;
         cssCode += fs.readFileSync(cssFile);
         cssCode += `</style>\n`;
@@ -81,7 +84,7 @@ const eachComponent = {
       if (fs.existsSync(componentPath + eachComponent.jsIndex)) {
         jsFile = componentPath + eachComponent.jsIndex;
       }
-
+      jsCode += "<!-- Component JS. -->\n";
       jsCode += `<script type="module">\n`;
       jsCode += fs.readFileSync(jsFile);
       jsCode += `</script>\n`;
@@ -97,11 +100,10 @@ const eachComponent = {
     const toolsFile = `tools/${component}.js`;
     if (fs.existsSync(toolsFile)) {
       toolsCode = "";
-      toolsCode = `<!--tools-->`;
-      toolsCode = `<script type="module">\n`;
+      toolsCode += `<!-- Tools JS -->\n`;
+      toolsCode += `<script type="module">\n`;
       toolsCode += fs.readFileSync(toolsFile);
       toolsCode += `</script>\n`;
-      toolsCode += `<workshop-tools></workshop-tools>\n`;
     }
     return toolsCode;
   }
