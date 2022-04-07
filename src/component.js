@@ -1,7 +1,13 @@
-const fs = require("fs");
-const path = require("path");
+import { createRequire } from "module";
+import path from "path";
+import { fileURLToPath } from "url";
 
-class Component {
+const require = createRequire(import.meta.url);
+const fs = require("fs");
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export class Component {
   constructor(
     id,
     needsIconFonts = false,
@@ -19,6 +25,21 @@ class Component {
     this.destinationFile = `${this.workshopDir}${id}.html`;
   }
 
+  hasTemplateFile() {
+    if (fs.existsSync(this.templateFile)) {
+      return true;
+    }
+    return false;
+  }
+
+  writeIndexEntry() {
+    let entry = "";
+    entry += `<p><a href="${this.id}.html">${this.id}</a></p>\n`;
+    entry += `<li>Has template.html: ${this.hasTemplateFile()}</li>\n`;
+
+    return entry;
+  }
+
   writeHTML() {
     let code = "";
     code += `<head>\n`;
@@ -32,8 +53,10 @@ class Component {
       return console.log(`Creating file ${this.destinationFile}.`);
     });
   }
-}
 
-const zakiya = new Component("ds-back-to-top");
-zakiya.needsIconFonts = true;
-zakiya.writeHTML();
+  renderPage() {
+    if (this.hasTemplateFile() === true) {
+      this.writeHTML();
+    }
+  }
+}
