@@ -30,6 +30,7 @@ export class Component {
         relativePath: ""
       }
     };
+    this.toolsFile = `src/tools/${id}.js`;
     this.templateFile = `${this.directoryPath}${id}${this.templateFile}`;
     this.destinationFile = `${this.workshopDir}${id}.html`;
     this.fontCSS = "ds-icons/src/icon-font.css";
@@ -113,9 +114,8 @@ export class Component {
 
   writeTools() {
     let toolsCode = this.empty;
-    const toolsFile = `tools/${this.id}.js`;
-    if (fs.existsSync(toolsFile)) {
-      toolsCode = this.makeJSCode("Tools", fs.readFileSync(toolsFile));
+    if (fs.existsSync(this.toolsFile)) {
+      toolsCode = this.makeJSCode("Tools", fs.readFileSync(this.toolsFile));
     }
     return toolsCode;
   }

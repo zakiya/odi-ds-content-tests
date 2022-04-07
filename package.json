@@ -5,9 +5,8 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "new": "node src/index.js",
-    "build": "node component-workshop.js",
-    "watch": "watch \"npm run build\" tools ",
+    "build": "node src/index.js",
+    "watch": "watch \"npm run build\" src ",
     "sass": "sass",
     "serve": "npx web-dev-server --root-dir workshop",
     "workshop": "run-s build serve"
