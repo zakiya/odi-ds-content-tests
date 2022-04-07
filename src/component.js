@@ -71,7 +71,8 @@ export class Component {
         const js = fs.readFileSync(
           this.directoryPath + this.id + this.assets.js.relativePath
         );
-        status = js.includes("var styles") ? two : one;
+        status =
+          js.includes("var styles") || js.includes("import styles") ? two : one;
       } catch (e) {
         status = three;
       }
@@ -124,7 +125,6 @@ export class Component {
 
   writeJS() {
     let jsCode = this.empty;
-    // console.log(this.directoryPath + this.id + this.assets.js.relativePath);
     if (this.stylesInJsStatus() != null) {
       jsCode = this.makeJSCode(
         "Component",
@@ -134,6 +134,22 @@ export class Component {
       );
     }
     return jsCode;
+  }
+
+  writeCSS() {
+    let cssCode = this.empty;
+    if (
+      this.stylesInJsStatus() !== "2 - Has css in js." &&
+      this.hasCSS() === true
+    ) {
+      cssCode = this.makeCSSCode(
+        "Component",
+        fs.readFileSync(
+          this.directoryPath + this.id + this.assets.css.relativePath
+        )
+      );
+    }
+    return cssCode;
   }
 
   writeIndexEntry() {
@@ -158,16 +174,17 @@ export class Component {
   writeHTML() {
     let code = "";
     code += `<head>\n`;
+    code += this.writeCSS();
     code += this.writeJS();
     code += this.writeFontCSS();
-    code += fs.readFileSync(this.templateFile);
     code += `\n</head>\n`;
+    code += fs.readFileSync(this.templateFile);
 
     fs.writeFile(this.destinationFile, code, (error) => {
       if (error) {
         return console.log(error);
       }
-      return console.log(`Creating file ${this.destinationFile}.`);
+      // return console.log(`Creating file ${this.destinationFile}.`);
     });
   }
 
