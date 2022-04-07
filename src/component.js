@@ -112,6 +112,15 @@ export class Component {
     return jsCode;
   }
 
+  writeTools() {
+    let toolsCode = this.empty;
+    const toolsFile = `tools/${this.id}.js`;
+    if (fs.existsSync(toolsFile)) {
+      toolsCode = this.makeJSCode("Tools", fs.readFileSync(toolsFile));
+    }
+    return toolsCode;
+  }
+
   writeFontCSS() {
     let fontCode = this.empty;
     if (this.hasFontCSS() === true) {
@@ -174,11 +183,14 @@ export class Component {
   writeHTML() {
     let code = "";
     code += `<head>\n`;
+    code += this.writeTools();
     code += this.writeCSS();
     code += this.writeJS();
     code += this.writeFontCSS();
-    code += `\n</head>\n`;
+    code += `</head>\n`;
+    code += `<body>\n`;
     code += fs.readFileSync(this.templateFile);
+    code += `\n</body>\n`;
 
     fs.writeFile(this.destinationFile, code, (error) => {
       if (error) {
