@@ -162,19 +162,23 @@ export class Component {
 
   writeIndexEntry() {
     let entry = "";
-    entry += `<p>`;
+    entry += `<h3>`;
     entry += this.hasTemplateFile()
       ? `<a href="${this.id}.html">${this.id}</a>`
       : this.id;
-    entry += `</p>\n`;
-    entry += `<ul>\n`;
+    entry += `</h3>\n`;
+    entry += `<details style="margin-left: 20px;"><summary>Details</summary><ul>\n`;
     entry += `<li>template.html: ${this.hasTemplateFile()}</li>\n`;
     entry += `<li>icon font css: ${this.hasFontCSS()}</li>\n`;
     entry += `<li>css: ${this.hasCSS()} ${this.assets.css.relativePath}</li>\n`;
-    entry += `<li>js: ${this.hasJS()} ${this.assets.js.relativePath}`;
-    entry += this.hasJS() ? `${this.stylesInJsStatus()} \n` : "";
+    entry += `<li>js: ${this.hasJS()} <ul><li>${
+      this.assets.js.relativePath
+    }</li>`;
+    entry += this.hasJS() ? `<li>${this.stylesInJsStatus()}</li> \n` : "";
+    entry += `</li></ul>\n`;
     entry += `</li>\n`;
     entry += `</ul>\n`;
+    entry += `</details>\n`;
 
     return entry;
   }
@@ -195,7 +199,7 @@ export class Component {
       if (error) {
         return console.log(error);
       }
-      // return console.log(`Creating file ${this.destinationFile}.`);
+      return console.log(`Creating file ${this.destinationFile}.`);
     });
   }
 

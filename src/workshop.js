@@ -42,7 +42,5 @@ export class Workshop {
       }
       return "";
     });
-
-    // component.needsIconFonts = true;
   }
 }
