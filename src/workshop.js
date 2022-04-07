@@ -10,11 +10,12 @@ const fs = require("fs");
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export class Workshop {
-  constructor() {
-    this.workshopDir = "workshop/";
-    this.directoryPath = path.join(__dirname, "../node_modules/@cagov/");
+  constructor(shed) {
+    this.workshopDir = shed.workshopDir;
+    this.directoryPath = shed.directoryPath;
     this.indexFile = `${this.workshopDir}index.html`;
     this.indexHTML = "";
+    this.shed = shed;
   }
 
   create() {
@@ -26,7 +27,7 @@ export class Workshop {
 
       //  Read directories.
       directories.forEach((dir) => {
-        const component = new Component(dir);
+        const component = new Component(dir, this.shed);
         component.renderPage();
         this.indexHTML += component.writeIndexEntry();
       });

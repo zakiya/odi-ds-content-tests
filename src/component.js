@@ -8,27 +8,27 @@ const fs = require("fs");
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export class Component {
-  constructor(id) {
+  constructor(id, shed) {
     this.id = id;
 
     this.empty = "";
-    this.workshopDir = "workshop/";
+    this.workshopDir = shed.workshopDir;
+    this.directoryPath = shed.directoryPath;
     this.templateFile = "/template.html";
-    this.directoryPath = path.join(__dirname, "../node_modules/@cagov/");
     this.needsIconFonts = ["ds-page-alert", "ds-link-icon"];
     this.assets = {
       js: {
         type: "js",
         pathsToTry: ["/src/", "/dist/"],
         index: "index.js",
-        relativePath: ""
+        relativePath: "",
       },
       css: {
         type: "css",
         pathsToTry: ["/src/css/", "/", "/src/", "/dist/"],
         index: "index.css",
-        relativePath: ""
-      }
+        relativePath: "",
+      },
     };
     this.toolsFile = `src/tools/${id}.js`;
     this.templateFile = `${this.directoryPath}${id}${this.templateFile}`;
@@ -64,7 +64,7 @@ export class Component {
       const jsStatus = [
         "1 - Has a js file but no css in js.",
         "2 - Has css in js.",
-        "3 - No css in js."
+        "3 - No css in js.",
       ];
       const [one, two, three] = jsStatus;
 
@@ -87,7 +87,7 @@ export class Component {
       if (fs.existsSync(file)) {
         status = true;
         Object.defineProperty(this.assets[asset.type], "relativePath", {
-          value: assetPath + asset.index
+          value: assetPath + asset.index,
         });
       }
     });
