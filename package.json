@@ -19,7 +19,7 @@
     "@cagov/ds-feature-card": "^1.0.5",
     "@cagov/ds-google-translate": "^1.0.2",
     "@cagov/ds-highlight-section": "^1.0.1",
-    "@cagov/ds-icons": "file:.yalc/@cagov/ds-icons",
+    "@cagov/ds-icons": "^0.0.1",
     "@cagov/ds-link-grid": "^2.1.0",
     "@cagov/ds-link-icon": "^1.1.1",
     "@cagov/ds-page-alert": "^1.0.2",
