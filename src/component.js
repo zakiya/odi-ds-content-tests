@@ -19,7 +19,7 @@ export class Component {
     this.assets = {
       js: {
         type: "js",
-        pathsToTry: ["/dist/", "/src/"],
+        pathsToTry: ["/src/", "/dist/"],
         index: "index.js",
         relativePath: ""
       },
@@ -71,8 +71,7 @@ export class Component {
         const js = fs.readFileSync(
           this.directoryPath + this.id + this.assets.js.relativePath
         );
-        status =
-          js.includes("var styles") || js.includes("import styles") ? two : one;
+        status = js.includes("var styles") ? two : one;
       } catch (e) {
         status = three;
       }
