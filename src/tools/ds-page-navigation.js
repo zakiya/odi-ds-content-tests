@@ -1,3 +1,4 @@
+// Page navigation - H2s must be in .main.
 const createPage = () => {
   // Create body.
   const body = document.querySelector("body");

@@ -1,3 +1,4 @@
+// Skip to content - The content section needs an id of "body-content" by default.
 const createPage = () => {
   // Create body.
   const body = document.querySelector("body");

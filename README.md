@@ -9,7 +9,7 @@
 
 ### Changing markup for demo purposes
 
-1. Add file called `[component]/.js` to `tools` directory.
+1. Add file called `[component]/.js` to `src/tools` directory.
 
 ### Substituting a local package for a published one
 

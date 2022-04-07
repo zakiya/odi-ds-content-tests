@@ -1,3 +1,4 @@
+// Back to top needs enough content to fill the page.
 const repeat = 3;
 
 const createPage = (n) => {

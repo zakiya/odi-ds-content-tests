@@ -1,3 +1,4 @@
+// Link icon - External link icon will only show with specific parents - like main.
 const modifyPage = () => {
   const body = document.querySelector("body");
   const main = document.createElement("main");
