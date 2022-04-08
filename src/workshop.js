@@ -20,6 +20,8 @@ export class Workshop {
       "UNIT-TESTS.md",
       "index.html",
       "components.11tydata.js",
+      "base-css",
+      "combined-css",
     ];
   }
 

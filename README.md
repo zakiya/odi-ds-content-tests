@@ -4,8 +4,18 @@
 
 ### Get started
 
+- Install dependencies: `npm install`
 - Watch tools folder: `npm run watch`
 - Build site and run in a broswer: `npm run workshop`
+
+### Use a local repo for source
+
+By default the workshop references the node_modules folder in the package root. To change source, the following lines to `src/index.js` under `const shed = new Shed(); `
+
+```js
+shed.directoryPath = "/local/path/to/repo/design-system/components/";
+shed.source = "repo";
+```
 
 ### Changing markup for demo purposes
 
