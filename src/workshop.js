@@ -1,11 +1,10 @@
-import { createRequire } from "module";
-
-import path from "path";
-import { fileURLToPath } from "url";
 import { Component } from "./component.js";
 
+// fs.
+import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const fs = require("fs");
+// end fs.
 
 export class Workshop {
   constructor(shed) {
