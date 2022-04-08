@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@cagov/ds-accordion": "^1.0.9",
+    "@cagov/ds-accordion": "^2.0.1",
     "@cagov/ds-back-to-top": "^2.0.0",
     "@cagov/ds-feature-card": "^1.0.5",
     "@cagov/ds-google-translate": "^1.0.2",
@@ -23,10 +23,10 @@
     "@cagov/ds-icons": "^0.0.1",
     "@cagov/ds-link-grid": "^2.1.0",
     "@cagov/ds-link-icon": "^1.1.1",
-    "@cagov/ds-page-alert": "^1.0.2",
+    "@cagov/ds-page-alert": "^2.0.0",
     "@cagov/ds-page-feedback": "^1.1.0",
     "@cagov/ds-page-navigation": "^2.1.0",
-    "@cagov/ds-pagination": "^1.0.5",
+    "@cagov/ds-pagination": "^2.0.0",
     "@cagov/ds-regulatory-outline": "^1.0.1",
     "@cagov/ds-site-footer": "^1.1.0",
     "@cagov/ds-site-header": "^1.1.0",
@@ -34,19 +34,19 @@
     "@cagov/ds-skip-to-content": "^1.0.2",
     "@cagov/ds-statewide-footer": "^1.0.5",
     "@cagov/ds-statewide-header": "^1.0.11",
-    "@cagov/ds-step-list": "^1.0.2",
+    "@cagov/ds-step-list": "^2.0.1",
     "@cagov/ds-table": "^1.0.1",
     "@web/dev-server": "^0.1.28"
   },
   "devDependencies": {
-    "@open-wc/eslint-config": "^4.3.0",
+    "@open-wc/eslint-config": "^7.0.0",
     "dev-server": "^0.2.0",
-    "eslint": "^7.32.0",
+    "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.3.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
     "sass": "^1.45.1",
-    "watch": "^0.13.0"
+    "watch": "^1.0.2"
   },
   "volta": {
     "node": "16.14.2"
