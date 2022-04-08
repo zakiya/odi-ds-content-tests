@@ -4,6 +4,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export class Shed {
   constructor() {
+    this.source = "npm";
     this.workshopDir = "workshop/";
     this.directoryPath = path.join(__dirname, "../node_modules/@cagov/");
   }

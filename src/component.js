@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export class Component {
   constructor(id, shed) {
     this.source = shed.source;
-    this.id = id;
+    this.id = id.startsWith("ds-") ? id : "ds-" + id;
 
     this.empty = "";
     this.workshopDir = shed.workshopDir;
@@ -31,13 +31,18 @@ export class Component {
       },
     };
 
-    // npm paths
-    this.toolsFile = `src/tools/${id}.js`;
+    // remote paths
     this.remoteDirectoryPath = shed.directoryPath;
     this.remoteComponentPath = shed.directoryPath + id;
     this.templateFile = this.remoteComponentPath + this.templateFile;
-    this.destinationFile = `${this.workshopDir}${id}.html`;
-    this.fontCSS = "ds-icons/src/icon-font.css";
+    this.fontCSS =
+      shed.source === "repo"
+        ? "icons/src/icon-font.css"
+        : "ds-icons/src/icon-font.css";
+
+    // workshop paths
+    this.toolsFile = `src/tools/${this.id}.js`;
+    this.destinationFile = `${this.workshopDir}${this.id}.html`;
   }
 
   hasTemplateFile() {

@@ -7,8 +7,6 @@ import { Component } from "./component.js";
 const require = createRequire(import.meta.url);
 const fs = require("fs");
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 export class Workshop {
   constructor(shed) {
     this.workshopDir = shed.workshopDir;
@@ -16,6 +14,13 @@ export class Workshop {
     this.indexFile = `${this.workshopDir}index.html`;
     this.indexHTML = "";
     this.shed = shed;
+    this.excludeFiles = [
+      ".DS_Store",
+      "README.md",
+      "UNIT-TESTS.md",
+      "index.html",
+      "components.11tydata.js",
+    ];
   }
 
   create() {
@@ -27,16 +32,17 @@ export class Workshop {
 
       //  Read directories.
       directories.forEach((dir) => {
-        const component = new Component(dir, this.shed);
-        component.renderPage();
-        this.indexHTML += component.writeIndexEntry();
+        if (!this.excludeFiles.includes(dir)) {
+          const component = new Component(dir, this.shed);
+          component.renderPage();
+          this.indexHTML += component.writeIndexEntry();
+        }
       });
       this.makeIndex(this.indexHTML);
     });
   }
 
   makeIndex(html) {
-    console.log();
     fs.writeFile(this.indexFile, html, (error) => {
       if (error) {
         return console.log(error);
