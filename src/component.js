@@ -9,11 +9,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export class Component {
   constructor(id, shed) {
+    this.source = shed.source;
     this.id = id;
 
     this.empty = "";
     this.workshopDir = shed.workshopDir;
-    this.directoryPath = shed.directoryPath;
     this.templateFile = "/template.html";
     this.needsIconFonts = ["ds-page-alert", "ds-link-icon"];
     this.assets = {
@@ -30,8 +30,12 @@ export class Component {
         relativePath: "",
       },
     };
+
+    // npm paths
     this.toolsFile = `src/tools/${id}.js`;
-    this.templateFile = `${this.directoryPath}${id}${this.templateFile}`;
+    this.remoteDirectoryPath = shed.directoryPath;
+    this.remoteComponentPath = shed.directoryPath + id;
+    this.templateFile = this.remoteComponentPath + this.templateFile;
     this.destinationFile = `${this.workshopDir}${id}.html`;
     this.fontCSS = "ds-icons/src/icon-font.css";
   }
@@ -70,7 +74,7 @@ export class Component {
 
       try {
         const js = fs.readFileSync(
-          this.directoryPath + this.id + this.assets.js.relativePath
+          this.remoteComponentPath + this.assets.js.relativePath
         );
         status = js.includes("var styles") ? two : one;
       } catch (e) {
@@ -83,7 +87,7 @@ export class Component {
   setCorrectAsset(asset) {
     let status = false;
     asset.pathsToTry.forEach((assetPath) => {
-      const file = this.directoryPath + this.id + assetPath + asset.index;
+      const file = this.remoteComponentPath + assetPath + asset.index;
       if (fs.existsSync(file)) {
         status = true;
         Object.defineProperty(this.assets[asset.type], "relativePath", {
@@ -125,7 +129,7 @@ export class Component {
     if (this.hasFontCSS() === true) {
       fontCode = this.makeCSSCode(
         "Font",
-        fs.readFileSync(this.directoryPath + this.fontCSS)
+        fs.readFileSync(this.remoteDirectoryPath + this.fontCSS)
       );
     }
     return fontCode;
@@ -136,9 +140,7 @@ export class Component {
     if (this.stylesInJsStatus() != null) {
       jsCode = this.makeJSCode(
         "Component",
-        fs.readFileSync(
-          this.directoryPath + this.id + this.assets.js.relativePath
-        )
+        fs.readFileSync(this.remoteComponentPath + this.assets.js.relativePath)
       );
     }
     return jsCode;
@@ -152,9 +154,7 @@ export class Component {
     ) {
       cssCode = this.makeCSSCode(
         "Component",
-        fs.readFileSync(
-          this.directoryPath + this.id + this.assets.css.relativePath
-        )
+        fs.readFileSync(this.remoteComponentPath + this.assets.css.relativePath)
       );
     }
     return cssCode;

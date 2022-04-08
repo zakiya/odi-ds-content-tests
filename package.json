@@ -7,6 +7,7 @@
   "scripts": {
     "build": "node src/index.js",
     "watch": "watch \"npm run build\" src ",
+    "watchds": "watch \"npm run build\" ~/Sites/design-system/components/page-alert",
     "sass": "sass",
     "serve": "npx web-dev-server --root-dir workshop",
     "workshop": "run-s build serve"
