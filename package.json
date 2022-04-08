@@ -36,10 +36,11 @@
     "@cagov/ds-statewide-header": "^1.0.11",
     "@cagov/ds-step-list": "^2.0.1",
     "@cagov/ds-table": "^1.0.1",
-    "@web/dev-server": "^0.1.28"
+    "dotenv": "^16.0.0"
   },
   "devDependencies": {
     "@open-wc/eslint-config": "^7.0.0",
+    "@web/dev-server": "^0.1.28",
     "dev-server": "^0.2.0",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.3.0",

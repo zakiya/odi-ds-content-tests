@@ -10,11 +10,12 @@
 
 ### Use a local repo for source
 
-By default the workshop references the node_modules folder in the package root. To change source, the following lines to `src/index.js` under `const shed = new Shed(); `
+By default the workshop references the node_modules folder in the this repo's root. To change source, add the following to `.env` in this repo's root.
 
 ```js
-shed.directoryPath = "/local/path/to/repo/design-system/components/";
-shed.source = "repo";
+{
+    SOURCE=/path/to/local/repo/design-system/components/
+}
 ```
 
 ### Changing markup for demo purposes
