@@ -61,6 +61,10 @@ yalc update
 ## Remove all yalc packages from the current project.
 yalc remove --all
 
+## Remove yalc version and reinstall from packagist.
+yalc remove @cagov/ds-link-icon
+npm install
+
 #
 yalc installations clean my-package
 
