@@ -1,0 +1,725 @@
+<head>
+<!-- Component JS -->
+<script type="module">
+var styles = "cagov-places {\n  /* https://www.w3.org/TR/wai-aria-practices-1.1/examples/combobox/aria1.0pattern/css/combobox-1.0.css */\n  /*  https://www.w3.org/TR/wai-aria-practices-1.1/examples/combobox/aria1.0pattern/css/listbox.css */\n  /* focus and hover styling */\n}\ncagov-places .annotate {\n  font-style: italic;\n  color: #366ed4;\n}\ncagov-places .combobox-list {\n  position: relative;\n}\ncagov-places .combobox-inline label,\ncagov-places .combobox-list label {\n  margin: 0;\n  padding: 0;\n  display: block;\n}\ncagov-places .combobox-list .group input,\ncagov-places .combobox-list .group button {\n  display: inline;\n  background-color: #eee;\n}\ncagov-places .combobox-list .group input.focus {\n  background-color: #d6e8f5;\n  outline-color: #348ccb;\n}\ncagov-places .combobox-list .group button {\n  margin: 0;\n  padding: 0 0.125em 0 0.125em;\n  position: relative;\n  top: 1px;\n  left: -2px;\n  font-size: 85%;\n  background-color: #eee;\n}\ncagov-places ul[role=listbox] {\n  margin: 0;\n  padding: 0;\n  position: absolute;\n  top: 3em;\n  list-style: none;\n  background-color: #eee;\n  display: none;\n  border: 2px #333 solid;\n  height: 12em;\n  width: 10em;\n  overflow: scroll;\n}\ncagov-places ul[role=listbox] li[role=option] {\n  margin: 0;\n  padding: 0;\n  padding-left: 0.125em;\n  border-top: 1px solid transparent;\n  border-bottom: 1px solid transparent;\n}\ncagov-places [role=listbox].focus {\n  border-color: #348ccb;\n}\ncagov-places [role=listbox] [role=option] {\n  display: block;\n  margin: 0.25em;\n  padding: 0;\n  background-color: #eee;\n  font-size: 100%;\n}\ncagov-places button:focus,\ncagov-places button:hover,\ncagov-places input:focus,\ncagov-places input:hover {\n  outline: 2px solid black;\n}\ncagov-places input:focus,\ncagov-places input:hover {\n  background-color: #eee;\n}\ncagov-places [role=listbox] [role=option][aria-selected=true] {\n  background-color: #ccc;\n}\ncagov-places [role=listbox].focus [role=option][aria-selected=true] {\n  background-color: #aed2ea;\n  border-color: #348ccb;\n}\ncagov-places [role=listbox] li[role=option]:hover {\n  background-color: #c2ddef;\n}\n\n/*# sourceMappingURL=index.css.map */\n";
+
+class CaGovPlaces extends window.HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `<div class="combobox-list">
+    <label for="cb1-input"> State </label>
+    <div class="group">
+      <input
+        id="cb1-input"
+        class="cb_edit"
+        type="text"
+        role="combobox"
+        aria-autocomplete="both"
+        aria-expanded="false"
+        aria-haspopup="true"
+        aria-owns="lb1"
+      />
+      <button id="cb1-button" aria-label="Open" tabindex="-1">▽</button>
+    </div>
+    <ul id="lb1" role="listbox" aria-label="States">
+      <li id="lb1-al" role="option">Alabama</li>
+      <li id="lb1-ak" role="option">Alaska</li>
+      <li id="lb1-as" role="option">American Samoa</li>
+      <li id="lb1-az" role="option">Arizona</li>
+      <li id="lb1-ar" role="option">Arkansas</li>
+      <li id="lb1-ca" role="option">California</li>
+      <li id="lb1-co" role="option">Colorado</li>
+      <li id="lb1-ct" role="option">Connecticut</li>
+      <li id="lb1-de" role="option">Delaware</li>
+      <li id="lb1-dc" role="option">District of Columbia</li>
+      <li id="lb1-fl" role="option">Florida</li>
+      <li id="lb1-ga" role="option">Georgia</li>
+      <li id="lb1-gm" role="option">Guam</li>
+      <li id="lb1-hi" role="option">Hawaii</li>
+      <li id="lb1-id" role="option">Idaho</li>
+      <li id="lb1-il" role="option">Illinois</li>
+      <li id="lb1-in" role="option">Indiana</li>
+      <li id="lb1-ia" role="option">Iowa</li>
+      <li id="lb1-ks" role="option">Kansas</li>
+      <li id="lb1-ky" role="option">Kentucky</li>
+      <li id="lb1-la" role="option">Louisiana</li>
+      <li id="lb1-me" role="option">Maine</li>
+      <li id="lb1-md" role="option">Maryland</li>
+      <li id="lb1-ma" role="option">Massachusetts</li>
+      <li id="lb1-mi" role="option">Michigan</li>
+      <li id="lb1-mn" role="option">Minnesota</li>
+      <li id="lb1-ms" role="option">Mississippi</li>
+      <li id="lb1-mo" role="option">Missouri</li>
+      <li id="lb1-mt" role="option">Montana</li>
+      <li id="lb1-ne" role="option">Nebraska</li>
+      <li id="lb1-nv" role="option">Nevada</li>
+      <li id="lb1-nh" role="option">New Hampshire</li>
+      <li id="lb1-nj" role="option">New Jersey</li>
+      <li id="lb1-nm" role="option">New Mexico</li>
+      <li id="lb1-ny" role="option">New York</li>
+      <li id="lb1-nc" role="option">North Carolina</li>
+      <li id="lb1-nd" role="option">North Dakota</li>
+      <li id="lb1-mp" role="option">Northern Marianas Islands</li>
+      <li id="lb1-oh" role="option">Ohio</li>
+      <li id="lb1-ok" role="option">Oklahoma</li>
+      <li id="lb1-or" role="option">Oregon</li>
+      <li id="lb1-pa" role="option">Pennsylvania</li>
+      <li id="lb1-pr" role="option">Puerto Rico</li>
+      <li id="lb1-ri" role="option">Rhode Island</li>
+      <li id="lb1-sc" role="option">South Carolina</li>
+      <li id="lb1-sd" role="option">South Dakota</li>
+      <li id="lb1-tn" role="option">Tennessee</li>
+      <li id="lb1-tx" role="option">Texas</li>
+      <li id="lb1-ut" role="option">Utah</li>
+      <li id="lb1-ve" role="option">Vermont</li>
+      <li id="lb1-va" role="option">Virginia</li>
+      <li id="lb1-vi" role="option">Virgin Islands</li>
+      <li id="lb1-wa" role="option">Washington</li>
+      <li id="lb1-wv" role="option">West Virginia</li>
+      <li id="lb1-wi" role="option">Wisconsin</li>
+      <li id="lb1-wy" role="option">Wyoming</li>
+    </ul>
+  </div>
+`;
+  }
+}
+
+window.customElements.define("cagov-places", CaGovPlaces);
+
+const style = document.createElement("style");
+style.textContent = styles;
+document.querySelector("head").appendChild(style);
+
+/**
+ * ComboboxList;
+ */
+
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ */
+var ComboboxList = function (domNode) {
+  this.domNode = domNode;
+  this.listbox = false;
+  this.option = false;
+
+  this.hasFocus = false;
+  this.hasHover = false;
+  this.filter = "";
+  this.isNone = false;
+  this.isList = false;
+  this.isBoth = false;
+
+  this.keyCode = Object.freeze({
+    BACKSPACE: 8,
+    TAB: 9,
+    RETURN: 13,
+    ESC: 27,
+    SPACE: 32,
+    PAGEUP: 33,
+    PAGEDOWN: 34,
+    END: 35,
+    HOME: 36,
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40,
+  });
+};
+
+ComboboxList.prototype.init = function () {
+  this.domNode.setAttribute("aria-haspopup", "true");
+
+  var autocomplete = this.domNode.getAttribute("aria-autocomplete");
+
+  if (typeof autocomplete === "string") {
+    autocomplete = autocomplete.toLowerCase();
+    this.isNone = autocomplete === "none";
+    this.isList = autocomplete === "list";
+    this.isBoth = autocomplete === "both";
+  } else {
+    // default value of autocomplete
+    this.isNone = true;
+  }
+
+  this.domNode.addEventListener("keydown", this.handleKeydown.bind(this));
+  this.domNode.addEventListener("keyup", this.handleKeyup.bind(this));
+  this.domNode.addEventListener("click", this.handleClick.bind(this));
+  this.domNode.addEventListener("focus", this.handleFocus.bind(this));
+  this.domNode.addEventListener("blur", this.handleBlur.bind(this));
+
+  // initialize pop up menus
+
+  var listbox = document.getElementById(this.domNode.getAttribute("aria-owns"));
+
+  if (listbox) {
+    this.listbox = new Listbox(listbox, this);
+    this.listbox.init();
+  }
+
+  // Open Button
+
+  var button = this.domNode.nextElementSibling;
+
+  if (button && button.tagName === "BUTTON") {
+    button.addEventListener("click", this.handleButtonClick.bind(this));
+  }
+};
+
+ComboboxList.prototype.setActiveDescendant = function (option) {
+  if (option && this.listbox.hasFocus) {
+    this.domNode.setAttribute("aria-activedescendant", option.domNode.id);
+  } else {
+    this.domNode.setAttribute("aria-activedescendant", "");
+  }
+};
+
+ComboboxList.prototype.setValue = function (value) {
+  this.filter = value;
+  this.domNode.value = this.filter;
+  this.domNode.setSelectionRange(this.filter.length, this.filter.length);
+  if (this.isList || this.isBoth) {
+    this.listbox.filterOptions(this.filter, this.option);
+  }
+};
+
+ComboboxList.prototype.setOption = function (option, flag) {
+  if (typeof flag !== "boolean") {
+    flag = false;
+  }
+
+  if (option) {
+    this.option = option;
+    this.listbox.setCurrentOptionStyle(this.option);
+    this.setActiveDescendant(this.option);
+
+    if (this.isBoth) {
+      this.domNode.value = this.option.textContent;
+      if (flag) {
+        this.domNode.setSelectionRange(
+          this.option.textContent.length,
+          this.option.textContent.length
+        );
+      } else {
+        this.domNode.setSelectionRange(
+          this.filter.length,
+          this.option.textContent.length
+        );
+      }
+    }
+  }
+};
+
+ComboboxList.prototype.setVisualFocusTextbox = function () {
+  this.listbox.domNode.classList.remove("focus");
+  this.listbox.hasFocus = false;
+  this.domNode.classList.add("focus");
+  this.hasFocus = true;
+  this.setActiveDescendant(false);
+};
+
+ComboboxList.prototype.setVisualFocusListbox = function () {
+  this.domNode.classList.remove("focus");
+  this.hasFocus = false;
+  this.listbox.domNode.classList.add("focus");
+  this.listbox.hasFocus = true;
+  this.setActiveDescendant(this.option);
+};
+
+ComboboxList.prototype.removeVisualFocusAll = function () {
+  this.domNode.classList.remove("focus");
+  this.hasFocus = false;
+  this.listbox.domNode.classList.remove("focus");
+  this.listbox.hasFocus = true;
+  this.option = false;
+  this.setActiveDescendant(false);
+};
+
+/* Event Handlers */
+
+ComboboxList.prototype.handleKeydown = function (event) {
+  event.currentTarget;
+    var flag = false;
+    event.key;
+    event.shiftKey;
+    event.ctrlKey;
+    var altKey = event.altKey;
+
+  switch (event.keyCode) {
+    case this.keyCode.RETURN:
+      if ((this.listbox.hasFocus || this.isBoth) && this.option) {
+        this.setValue(this.option.textContent);
+      }
+      this.listbox.close(true);
+      flag = true;
+      break;
+
+    case this.keyCode.DOWN:
+      if (this.listbox.hasOptions()) {
+        if (this.listbox.hasFocus || (this.isBoth && this.option)) {
+          this.setOption(this.listbox.getNextItem(this.option), true);
+        } else {
+          this.listbox.open();
+          if (!altKey) {
+            this.setOption(this.listbox.getFirstItem(), true);
+          }
+        }
+        this.setVisualFocusListbox();
+      }
+      flag = true;
+      break;
+
+    case this.keyCode.UP:
+      if (this.listbox.hasOptions()) {
+        if (this.listbox.hasFocus || (this.isBoth && this.option)) {
+          this.setOption(this.listbox.getPreviousItem(this.option), true);
+        } else {
+          this.listbox.open();
+          if (!altKey) {
+            this.setOption(this.listbox.getLastItem(), true);
+          }
+        }
+        this.setVisualFocusListbox();
+      }
+      flag = true;
+      break;
+
+    case this.keyCode.ESC:
+      this.listbox.close(true);
+      this.setVisualFocusTextbox();
+      this.setValue("");
+      this.option = false;
+      flag = true;
+      break;
+
+    case this.keyCode.TAB:
+      this.listbox.close(true);
+      if (this.listbox.hasFocus) {
+        if (this.option) {
+          this.setValue(this.option.textContent);
+        }
+      }
+      break;
+  }
+
+  if (flag) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+};
+
+ComboboxList.prototype.handleKeyup = function (event) {
+  event.currentTarget;
+    var flag = false,
+    option = false,
+    char = event.key;
+
+  function isPrintableCharacter(str) {
+    return str.length === 1 && str.match(/\S/);
+  }
+
+  if (isPrintableCharacter(char)) {
+    this.filter += char;
+  }
+
+  // this is for the case when a selection in the textbox has been deleted
+  if (this.domNode.value.length < this.filter.length) {
+    this.filter = this.domNode.value;
+    this.option = false;
+  }
+
+  if (event.keyCode === this.keyCode.ESC) {
+    return;
+  }
+
+  switch (event.keyCode) {
+    case this.keyCode.BACKSPACE:
+      this.setValue(this.domNode.value);
+      this.setVisualFocusTextbox();
+      this.listbox.setCurrentOptionStyle(false);
+      this.option = false;
+      flag = true;
+      break;
+
+    case this.keyCode.LEFT:
+    case this.keyCode.RIGHT:
+    case this.keyCode.HOME:
+    case this.keyCode.END:
+      if (this.isBoth) {
+        this.filter = this.domNode.value;
+      } else {
+        this.option = false;
+        this.listbox.setCurrentOptionStyle(false);
+      }
+
+      this.setVisualFocusTextbox();
+      flag = true;
+      break;
+
+    default:
+      if (isPrintableCharacter(char)) {
+        this.setVisualFocusTextbox();
+        this.listbox.setCurrentOptionStyle(false);
+        flag = true;
+      }
+
+      break;
+  }
+
+  if (event.keyCode !== this.keyCode.RETURN) {
+    if (this.isList || this.isBoth) {
+      option = this.listbox.filterOptions(this.filter, this.option);
+      if (option) {
+        if (this.listbox.isClosed()) {
+          if (this.domNode.value.length) {
+            this.listbox.open();
+          }
+        }
+
+        if (
+          option.textComparison.indexOf(this.domNode.value.toLowerCase()) === 0
+        ) {
+          this.option = option;
+          if (this.isBoth || this.listbox.hasFocus) {
+            this.listbox.setCurrentOptionStyle(option);
+            if (this.isBoth && isPrintableCharacter(char)) {
+              this.setOption(option);
+            }
+          }
+        } else {
+          this.option = false;
+          this.listbox.setCurrentOptionStyle(false);
+        }
+      } else {
+        this.listbox.close();
+        this.option = false;
+        this.setActiveDescendant(false);
+      }
+    } else {
+      if (this.domNode.value.length) {
+        this.listbox.open();
+      }
+    }
+  }
+
+  if (flag) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+};
+
+ComboboxList.prototype.handleClick = function (event) {
+  if (this.listbox.isOpen()) {
+    this.listbox.close(true);
+  } else {
+    this.listbox.open();
+  }
+};
+
+ComboboxList.prototype.handleFocus = function (event) {
+  this.setVisualFocusTextbox();
+  this.option = false;
+  this.listbox.setCurrentOptionStyle(null);
+};
+
+ComboboxList.prototype.handleBlur = function (event) {
+  this.listbox.hasFocus = false;
+  this.listbox.setCurrentOptionStyle(null);
+  this.removeVisualFocusAll();
+  setTimeout(this.listbox.close.bind(this.listbox, false), 300);
+};
+
+ComboboxList.prototype.handleButtonClick = function (event) {
+  if (this.listbox.isOpen()) {
+    this.listbox.close(true);
+  } else {
+    this.listbox.open();
+  }
+  this.domNode.focus();
+  this.setVisualFocusTextbox();
+};
+
+// Initialize comboboxes
+
+window.addEventListener("load", function () {
+  var comboboxes = document.querySelectorAll(
+    '.combobox-list [role="combobox"]'
+  );
+
+  for (var i = 0; i < comboboxes.length; i++) {
+    var combobox = new ComboboxList(comboboxes[i]);
+    combobox.init();
+  }
+});
+
+/**
+ * Listbox
+ */
+
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ */
+var Listbox = function (domNode, comboboxObj) {
+  var msgPrefix = "Listbox constructor argument domNode ";
+
+  // Check whether domNode is a DOM element
+  if (!domNode instanceof Element) {
+    throw new TypeError(msgPrefix + "is not a DOM Element.");
+  }
+
+  // Check whether domNode has child elements
+  if (domNode.childElementCount === 0) {
+    throw new Error(msgPrefix + "has no element children.");
+  }
+
+  // Check whether domNode child elements are A elements
+  var childElement = domNode.firstElementChild;
+  while (childElement) {
+    childElement.firstElementChild;
+    childElement = childElement.nextElementSibling;
+  }
+
+  this.domNode = domNode;
+  this.combobox = comboboxObj;
+
+  this.allOptions = [];
+
+  this.options = []; // see PopupMenu init method
+
+  this.firstOption = null; // see PopupMenu init method
+  this.lastOption = null; // see PopupMenu init method
+
+  this.hasFocus = false; // see MenuItem handleFocus, handleBlur
+  this.hasHover = false; // see PopupMenu handleMouseover, handleMouseout
+};
+
+/*
+ *   @method Listbox.prototype.init
+ *
+ *   @desc
+ *       Add domNode event listeners for mouseover and mouseout. Traverse
+ *       domNode children to configure each option and populate.options
+ *       array. Initialize firstOption and lastOption properties.
+ */
+Listbox.prototype.init = function () {
+  var optionElement,
+    optionElements,
+    option;
+
+  // Configure the domNode itself
+  this.domNode.tabIndex = -1;
+
+  this.domNode.setAttribute("role", "listbox");
+
+  this.domNode.addEventListener("mouseover", this.handleMouseover.bind(this));
+  this.domNode.addEventListener("mouseout", this.handleMouseout.bind(this));
+
+  // Traverse the element children of domNode: configure each with
+  // option role behavior and store reference in.options array.
+  optionElements = this.domNode.getElementsByTagName("LI");
+
+  for (var i = 0; i < optionElements.length; i++) {
+    optionElement = optionElements[i];
+
+    if (
+      !optionElement.firstElementChild &&
+      optionElement.getAttribute("role") != "separator"
+    ) {
+      option = new Option(optionElement, this);
+      option.init();
+      this.allOptions.push(option);
+    }
+  }
+
+  this.filterOptions("");
+};
+
+Listbox.prototype.filterOptions = function (filter, currentOption) {
+  if (typeof filter !== "string") {
+    filter = "";
+  }
+
+  var i,
+    option,
+    textContent,
+    numItems;
+
+  filter = filter.toLowerCase();
+
+  this.options = [];
+  this.firstChars = [];
+  this.domNode.innerHTML = "";
+
+  for (i = 0; i < this.allOptions.length; i++) {
+    option = this.allOptions[i];
+    if (filter.length === 0 || option.textComparison.indexOf(filter) === 0) {
+      this.options.push(option);
+      textContent = option.textContent.trim();
+      this.firstChars.push(textContent.substring(0, 1).toLowerCase());
+      this.domNode.appendChild(option.domNode);
+    }
+  }
+
+  // Use populated.options array to initialize firstOption and lastOption.
+  numItems = this.options.length;
+  if (numItems > 0) {
+    this.firstOption = this.options[0];
+    this.lastOption = this.options[numItems - 1];
+
+    if (currentOption && this.options.indexOf(currentOption) >= 0) {
+      option = currentOption;
+    } else {
+      option = this.firstOption;
+    }
+  } else {
+    this.firstOption = false;
+    option = false;
+    this.lastOption = false;
+  }
+
+  return option;
+};
+
+Listbox.prototype.setCurrentOptionStyle = function (option) {
+  for (var i = 0; i < this.options.length; i++) {
+    var opt = this.options[i];
+    if (opt === option) {
+      opt.domNode.setAttribute("aria-selected", "true");
+      this.domNode.scrollTop = opt.domNode.offsetTop;
+    } else {
+      opt.domNode.removeAttribute("aria-selected");
+    }
+  }
+};
+
+Listbox.prototype.setOption = function (option) {
+  if (option) {
+    this.combobox.setOption(option);
+    this.combobox.setValue(option.textContent);
+  }
+};
+
+/* EVENT HANDLERS */
+
+Listbox.prototype.handleMouseover = function (event) {
+  this.hasHover = true;
+};
+
+Listbox.prototype.handleMouseout = function (event) {
+  this.hasHover = false;
+  setTimeout(this.close.bind(this, false), 300);
+};
+
+/* FOCUS MANAGEMENT METHODS */
+
+Listbox.prototype.getFirstItem = function () {
+  return this.firstOption;
+};
+
+Listbox.prototype.getLastItem = function () {
+  return this.lastOption;
+};
+
+Listbox.prototype.getPreviousItem = function (currentOption) {
+  var index;
+
+  if (currentOption !== this.firstOption) {
+    index = this.options.indexOf(currentOption);
+    return this.options[index - 1];
+  }
+  return this.lastOption;
+};
+
+Listbox.prototype.getNextItem = function (currentOption) {
+  var index;
+
+  if (currentOption !== this.lastOption) {
+    index = this.options.indexOf(currentOption);
+    return this.options[index + 1];
+  }
+  return this.firstOption;
+};
+
+/* MENU DISPLAY METHODS */
+
+Listbox.prototype.isOpen = function () {
+  return this.domNode.style.display === "block";
+};
+
+Listbox.prototype.isClosed = function () {
+  return this.domNode.style.display !== "block";
+};
+
+Listbox.prototype.hasOptions = function () {
+  return this.options.length;
+};
+
+Listbox.prototype.open = function () {
+  // set CSS properties
+  this.domNode.style.display = "block";
+
+  // set aria-expanded attribute
+  this.combobox.domNode.setAttribute("aria-expanded", "true");
+};
+
+Listbox.prototype.close = function (force) {
+  if (typeof force !== "boolean") {
+    force = false;
+  }
+
+  if (force || (!this.hasFocus && !this.hasHover && !this.combobox.hasHover)) {
+    this.setCurrentOptionStyle(false);
+    this.domNode.style.display = "none";
+    this.combobox.domNode.setAttribute("aria-expanded", "false");
+    this.combobox.setActiveDescendant(false);
+  }
+};
+
+/**
+ * Option;
+ */
+
+/*
+ *   This content is licensed according to the W3C Software License at
+ *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ */
+var Option = function (domNode, listboxObj) {
+  this.domNode = domNode;
+  this.listbox = listboxObj;
+  this.textContent = domNode.textContent;
+  this.textComparison = domNode.textContent.toLowerCase();
+};
+
+Option.prototype.init = function () {
+  if (!this.domNode.getAttribute("role")) {
+    this.domNode.setAttribute("role", "option");
+  }
+
+  this.domNode.addEventListener("click", this.handleClick.bind(this));
+  this.domNode.addEventListener("mouseover", this.handleMouseover.bind(this));
+  this.domNode.addEventListener("mouseout", this.handleMouseout.bind(this));
+};
+
+/* EVENT HANDLERS */
+
+Option.prototype.handleClick = function (event) {
+  this.listbox.setOption(this);
+  this.listbox.close(true);
+};
+
+Option.prototype.handleMouseover = function (event) {
+  this.listbox.hasHover = true;
+  this.listbox.open();
+};
+
+Option.prototype.handleMouseout = function (event) {
+  this.listbox.hasHover = false;
+  setTimeout(this.listbox.close.bind(this.listbox, false), 300);
+};
+
+export { CaGovPlaces };
+</script>
+</head>
+<body>
+<cagov-places></cagov-places>
+</body>
